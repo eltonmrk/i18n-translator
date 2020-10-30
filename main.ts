@@ -17,6 +17,7 @@ export default class Main {
     }
 
     async init() {
+        this.checkConfig();
         const languages = await this.translationDeepl.getLanguages();
         const sourceLanguage = await this.promptService.ask(languages, 'Source language?');
         const targetLanguage = await this.promptService.ask(languages, 'Target language?');
@@ -31,5 +32,11 @@ export default class Main {
             targetLanguage,
             config().CONFIG_SOURCE_FILE,
             config().CONFIG_TARGET_PATH);
+    }
+
+    checkConfig() {
+        if (Object.keys(config()).length === 0) {
+            throw("Please add configuration in .env");
+        }
     }
 }
