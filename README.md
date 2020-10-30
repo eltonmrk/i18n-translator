@@ -1,37 +1,27 @@
-## Welcome to GitHub Pages
+# xlf-translator - when translation have to go fast
 
-You can use the [editor on GitHub](https://github.com/karmacv/xlf-translator/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
+XLF is an xml based format that is used in practice to translate software into different languages.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+The motivation behind this project is the automated translation of these XLF files into different languages. 
 
-### Markdown
+What is the concrete benefit?
+* Target group specific languages are supported.
+* Automated translation via cloud services.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+The motivation behind this project is the automated translation of these XLF files into different languages. The project is based on [Deno](https://deno.land/).
 
-```markdown
-Syntax highlighted code block
+## Installation
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+First, Deno must be installed. Then execute the following command to install the application locally:
 ```
+deno install --unstable -f --allow-read --allow-net https://deno.land/x/xlf_translator@0.1/index.ts
+```
+## Configuration
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+Create an `.env` file in the project folder. It should contain the following entries.
 
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/karmacv/xlf-translator/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+```
+DEEPL_AUTH_KEY=Authentication Key from DeepL
+CONFIG_SOURCE_FILE=Path to message file, e.g. ./languageFolder/messages.xlf
+CONFIG_TARGET_PATH=Path to parent folder of generated file, e.g. ./languageFolder/generated
+```
