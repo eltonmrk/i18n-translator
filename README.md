@@ -1,2 +1,2 @@
-# xlf-deepL-translator
+# xlf-translator
 convert xlf files based on powerful deepL translator
