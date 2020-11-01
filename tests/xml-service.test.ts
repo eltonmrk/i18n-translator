@@ -4,9 +4,13 @@ import {XmlService} from "../services/xml-service.ts";
 // @ts-ignore
 const DOMParser = xmldom.DOMParser;
 
+const { args } = Deno;
+
 Deno.test({
     name: "Test target translation is generated",
     async fn() {
+
+        console.log(Deno.args);
         const text = await Deno.readTextFileSync('./tests/mock/messages.xlf');
         const result = await new XmlService().processAndTranslateSources(text, 'DE', 'EN');
         const domDocument = new DOMParser().parseFromString(result);
