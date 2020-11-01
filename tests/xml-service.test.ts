@@ -7,9 +7,8 @@ const DOMParser = xmldom.DOMParser;
 Deno.test({
     name: "Test target translation is generated",
     async fn() {
-        const decoder = new TextDecoder('utf-8');
-        const text = decoder.decode(await Deno.readFile('./mock/messages.xlf'));
-        const result = new XmlService().processAndTranslateSources(text, 'DE', 'EN');
+        const text = await Deno.readTextFileSync('./tests/mock/messages.xlf');
+        const result = await new XmlService().processAndTranslateSources(text, 'DE', 'EN');
         const domDocument = new DOMParser().parseFromString(result);
         const transUnits:Array<any> = domDocument.getElementsByTagName('trans-unit');
         assert(transUnits.length > 0);
@@ -19,5 +18,5 @@ Deno.test({
             assert(targetNode);
             assert(targetNodeText);
         }
-    },
+    }
 });

@@ -1,20 +1,16 @@
-# xlf-translator - when translation have to go fast
+![xlf-translator for deno](images/logo.png)
 
-XLF is an xml based format that is used in practice to translate software into different languages.
+# xlf-translator - it roars in different languages
 
-The motivation behind this project is the automated translation of these XLF files into different languages. 
+XLF is an xml based format that is used in practice to translate software into different languages. [Read more on Wikipedia.](https://en.wikipedia.org/wiki/XLIFF)
 
-What is the concrete benefit?
-* Target group specific languages are supported.
-* Automated translation via cloud services.
-
-The motivation behind this project is the automated translation of these XLF files into different languages. The project is based on [Deno](https://deno.land/).
+To achieve a fast translation of your application, this library was created. It is based on the translation service of DeepL, which uses AI to achieve an excellent translation result.
 
 ## Installation
 
-First, Deno must be installed. Then execute the following command to install the application locally:
+First, [Deno](https://deno.land) must be installed. Then execute the following command to install the application locally:
 ```
-deno install --unstable -f --allow-read --allow-net https://deno.land/x/xlf_translator@0.1/index.ts
+deno install --unstable -f --allow-read --allow-net --allow-write https://deno.land/x/xlf_translator@0.1/index.ts
 ```
 ## Configuration
 
@@ -25,3 +21,7 @@ DEEPL_AUTH_KEY=Authentication Key from DeepL
 CONFIG_SOURCE_FILE=Path to message file, e.g. ./languageFolder/messages.xlf
 CONFIG_TARGET_PATH=Path to parent folder of generated file, e.g. ./languageFolder/generated
 ```
+
+## Execution
+
+In the project folder where the `.env` is located, execute the following command from `xlf-translator`. Sit back and enjoy your coffee, the work is done in a moment.
