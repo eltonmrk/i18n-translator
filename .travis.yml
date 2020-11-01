@@ -4,7 +4,7 @@ services:
 before_install:
 - docker build -t eltonmrk/xlf-translator .
 script:
-- docker run eltonmrk/xlf-translator test --unstable --allow-read --allow-net --allow-write -- DEEPL_AUTH_KEY=$DEEPL_AUTH_KEY CONFIG_SOURCE_FILE=$CONFIG_SOURCE_FILE CONFIG_TARGET_PATH=$CONFIG_TARGET_PATH
+- docker run eltonmrk/xlf-translator test --unstable --allow-read --allow-net --allow-write --allow-env -- DEEPL_AUTH_KEY=$DEEPL_AUTH_KEY CONFIG_SOURCE_FILE=$CONFIG_SOURCE_FILE CONFIG_TARGET_PATH=$CONFIG_TARGET_PATH
   --allow-env ./
 env:
   - secure: 3lvCwK9/GZ8ObDNIeS8qRCZGXCqazQVvj58zWqV4u1FtGakWpZ0oWl2kh0mtyfg+BDPA5Y5448+mILmym35wa7jw/rzDzpG2PLc6mWV6tHlXb+0OpUOph17TYZrpfgbedItpDxWgVmna17t3+i5cPxfswsbXxgu2FDgf3b+dI2D1IEkMZfkVgeWjFtpGuOcDcIjIxhmdmKbNMuA7vpeHIImhksRvIDPpV18HBVe/NQLB9T7R/TdkknGiZaF/6OfJCnksglIqS4Pz2k0zSWYkHd2s3XnMo9ymPC2eI02JsEZWWOd943l0Bmua0wY/UYbzAEKgPD06PLEUSaz039HQG0Bno0TmEjSExwQ+/IrTH71lFh3gbg7U8XK1C5ZJRT5ZIQKTryH64rh1dVPccILH8vfM/ueADd2QiWFMDZ7kfiNXsA8+sAlidJUwy4Vf3vHB8rk0LrV0OoPmjxgeacVtmzQJe/lME5dLSZgrOPgGvwJmFwUhAcC0mBRhRHkVKNKkFkkvBgr3Iy01Dtu8GtDmLSrn0YolzL5fta4KwZIQCJVtyVkernQxcyOcRgzw9cSC9/FYwxxLI1QYmE7+RPR90jqfh+ube4JJv/eDxKiQOLj3gkwIXGXgdJFPKDdQ/CrVGGu/UVaRzJHgLjcEyAlUfBNm172xZfzhTl9b76iuoYY=
