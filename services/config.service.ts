@@ -1,4 +1,7 @@
 import {config} from 'https://deno.land/x/dotenv/mod.ts';
+
+// deno eval "console.log(Deno.env.toObject())"
+
 export class ConfigService {
     static getConfigKey(key: string): string {
         if (config()[key]) {
