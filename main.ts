@@ -1,9 +1,8 @@
 import TranslationService from "./services/translation-service.ts";
 import PromptService from "./services/prompt-service.ts";
 import * as log from 'https://deno.land/std/log/mod.ts';
-import * as file from 'https://deno.land/std/fs/mod.ts'
-import {config} from 'https://deno.land/x/dotenv/mod.ts';
 import TranslationDeepl from "./services/translators/deepl/translation-deepl.ts";
+import {ConfigService} from "./services/config.service.ts";
 
 export default class Main {
     private translationService: TranslationService;
@@ -21,21 +20,22 @@ export default class Main {
         const languages = await this.translationDeepl.getLanguages();
         const sourceLanguage = await this.promptService.ask(languages, 'Source language?');
         const targetLanguage = await this.promptService.ask(languages, 'Target language?');
-        if (file.existsSync(config().CONFIG_SOURCE_FILE)) {
-            log.info(`✔ Found xlf file ${config().CONFIG_SOURCE_FILE}.`);
+        if (ConfigService.getConfigKey('CONFIG_SOURCE_FILE')) {
+            log.info(`✔ Found xlf file ${ConfigService.getConfigKey('CONFIG_SOURCE_FILE')}.`);
         } else {
-            log.error(`XLF file ${config().CONFIG_SOURCE_FILE} not found.`);
+            log.error(`XLF file env variable 'CONFIG_SOURCE_FILE' not found.`);
         }
         log.info(`Start translation ${sourceLanguage} -> ${targetLanguage}`);
         this.translationService.translateXlf(
             sourceLanguage,
             targetLanguage,
-            config().CONFIG_SOURCE_FILE,
-            config().CONFIG_TARGET_PATH);
+            ConfigService.getConfigKey('CONFIG_SOURCE_FILE'),
+            ConfigService.getConfigKey('CONFIG_TARGET_PATH'));
     }
 
     checkConfig() {
-        if (Object.keys(config()).length === 0) {
+        if (!ConfigService.getConfigKey('CONFIG_SOURCE_FILE') &&
+            !ConfigService.getConfigKey('CONFIG_TARGET_PATH')) {
             throw("Please add configuration in .env");
         }
     }
