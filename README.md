@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/eltonmrk/xlf-translator.svg?branch=main)](https://travis-ci.com/eltonmrk/xlf-translator)
+[![Build Status](https://travis-ci.com/eltonmrk/xlf-translator.svg?branch=main&style=centerme)](https://travis-ci.com/eltonmrk/xlf-translator)
 
 ![xlf-translator for deno](images/logo.png)
 
