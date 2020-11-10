@@ -9,8 +9,6 @@ const { args } = Deno;
 Deno.test({
     name: "Test target translation is generated",
     async fn() {
-
-        console.log(Deno.args);
         const text = await Deno.readTextFileSync('./tests/mock/messages.xlf');
         const result = await new XmlService().processAndTranslateSources(text, 'DE', 'EN');
         const domDocument = new DOMParser().parseFromString(result);
@@ -21,6 +19,22 @@ Deno.test({
             const targetNodeText = targetNode.childNodes[0].data;
             assert(targetNode);
             assert(targetNodeText);
+        }
+    }
+});
+
+Deno.test({
+    name: "Should translate source with html content",
+    async fn() {
+        for (const tagName of ['trans_with_html', 'trans_with_dynamic_value']) {
+            const text = await Deno.readTextFileSync('./tests/mock/messages.xlf');
+            const result = await new XmlService().processAndTranslateSources(text, 'DE', 'EN');
+            const domDocument = new DOMParser().parseFromString(result);
+            const transUnits:Array<any> = domDocument.getElementsByTagName('trans-unit');
+            const transWithHTML = domDocument.getElementById(tagName);
+            assert(transWithHTML);
+            assert(transWithHTML.getElementsByTagName('target')[0]);
+            assert(transWithHTML.getElementsByTagName('target')[0].childNodes[0]);
         }
     }
 });

@@ -16,7 +16,6 @@ export class XmlService {
         this.translationDeepl = new TranslationDeepl();
     }
 
-
     async processAndTranslateSources(
         fileContent: string,
         sourceLanguage: string,
@@ -25,10 +24,18 @@ export class XmlService {
         const domDocument = new DOMParser().parseFromString(fileContent);
         const transUnits: Array<any> = domDocument.getElementsByTagName('trans-unit');
         for (var i = 0; i < transUnits.length; i++) {
-            const text = transUnits[i].getElementsByTagName('source')[0].childNodes[0].data;
+            const source = transUnits[i].getElementsByTagName('source')[0];
+            let text = transUnits[i].getElementsByTagName('source')[0].childNodes.toString();
             log.info(`${i + 1} of ${transUnits.length}`);
             try {
-                let translatedText = await this.translationDeepl.translate(sourceLanguage, targetLanguage, text);
+                let translatedText = null;
+                if (sourceLanguage !== targetLanguage) {
+                    translatedText = await this.translationDeepl.translate(sourceLanguage, targetLanguage, text);
+                } else {
+                    translatedText = {
+                        text: text
+                    };
+                }
                 const targetElement = domDocument.createElement("target");
                 targetElement.textContent = translatedText!.text;
                 if (logging) {
