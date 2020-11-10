@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.com/eltonmrk/xlf-translator.svg?branch=main)](https://travis-ci.com/eltonmrk/xlf-translator)
 
-![xlf-translator for deno](images/logo.png)
+![xlf-translator for deno](images/logo.png?style=centerme)
 
 # xlf-translator - it roars in different languages
 
@@ -16,7 +16,7 @@ To achieve a fast translation of your application, this library was created. It 
 
 First, [Deno](https://deno.land) must be installed. Then execute the following command to install the application locally:
 ```
-deno install --unstable -f --allow-read --allow-net --allow-write --allow-env https://deno.land/x/xlf_translator@0.1/index.ts
+deno install --unstable -f --allow-read --allow-net --allow-write --allow-env https://deno.land/x/xlf_translator/index.ts
 ```
 ## Configuration
 
