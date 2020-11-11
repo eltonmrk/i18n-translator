@@ -1,8 +1,8 @@
 import xmldom from 'https://dev.jspm.io/xmldom';
 import * as log from 'https://deno.land/std/log/mod.ts';
 import XmlFormatter from "https://dev.jspm.io/xml-formatter";
-import {TranslationsSto} from "../clients/deepL/sto/translations-sto.ts";
 import TranslationDeepl from "./translators/deepl/translation-deepl.ts";
+import { ld } from 'https://deno.land/x/deno_lodash/mod.ts';
 
 // @ts-ignore
 const DOMParser = xmldom.DOMParser;
@@ -25,7 +25,7 @@ export class XmlService {
         const transUnits: Array<any> = domDocument.getElementsByTagName('trans-unit');
         for (var i = 0; i < transUnits.length; i++) {
             const source = transUnits[i].getElementsByTagName('source')[0];
-            let text = transUnits[i].getElementsByTagName('source')[0].childNodes.toString();
+            let text = source.childNodes.toString();
             log.info(`${i + 1} of ${transUnits.length}`);
             try {
                 let translatedText = null;
@@ -50,6 +50,8 @@ export class XmlService {
             }
         }
         // @ts-ignore
-        return XmlFormatter(new XMLSerializer().serializeToString(domDocument));
+        let result = ld.unescape(XmlFormatter(new XMLSerializer().serializeToString(domDocument)));
+        result = result.replace(/xmlns=".*"/gi, '');
+        return result;
     }
 }

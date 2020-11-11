@@ -34,7 +34,8 @@ Deno.test({
             const transWithHTML = domDocument.getElementById(tagName);
             assert(transWithHTML);
             assert(transWithHTML.getElementsByTagName('target')[0]);
-            assert(transWithHTML.getElementsByTagName('target')[0].childNodes[0]);
+            assert(transWithHTML.getElementsByTagName('target')[0].childNodes.toString().search("&lt;") === -1);
+            assert(transWithHTML.getElementsByTagName('target')[0].childNodes.toString().search("xmlns") === -1);
         }
     }
 });
