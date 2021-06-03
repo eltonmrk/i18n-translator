@@ -2,15 +2,17 @@
 
 ![xlf-translator for deno](images/logo.png?style=centerme)
 
-# xlf-translator - it roars in different languages
+# i18n-translator - it roars in different languages
 
-XLF is an xml based format that is used in practice to translate software into different languages. [Read more on Wikipedia.](https://en.wikipedia.org/wiki/XLIFF)
+Il permet la traduction des formats suivants :
+* xlf (par exemple Angular)
+* resx (par exemple, Xamarin Forms)
 
 To achieve a fast translation of your application, this library was created. It is based on the translation service of DeepL, which uses AI to achieve an excellent translation result.
 
-## xlf-translator in action
+## i18n-translator in action
 
-![xlf-translator for deno](images/screenrecording.gif)
+![i18n-translator for deno](images/screenrecording.gif)
 
 ## Installation
 
