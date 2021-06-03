@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.com/eltonmrk/xlf-translator.svg?branch=main)](https://travis-ci.com/eltonmrk/xlf-translator)
 
-![xlf-translator for deno](images/logo.png?style=centerme)
+![i18n-translator for deno](images/logo.png?style=centerme)
 
 # i18n-translator - it roars in different languages
 
